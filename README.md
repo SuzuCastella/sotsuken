@@ -1,3 +1,29 @@
+# 実行方法
+```
+$ source venv/Scripts/activate
+$ cd examples
+$ py eval_long_ppl.py   --model_name_or_path "meta-llama/Llama-2-7b-hf"   --dataset_name wikitext   --task wikitext-103-raw-v1   --split test   --num_samples 50   --num_eval_tokens 2048   --enable_start_recent_kv_cache   --start_size 4   --recent_size 1024   --enable_pos_shift   --output_dir outputs/llama2_7b_ppl
+```
+```
+py examples/eval_long_ppl_change.py \
+  --model_name_or_path "meta-llama/Llama-2-7b-hf" \
+  --dataset_name wikitext --task wikitext-103-raw-v1 --split test \
+  --num_samples 50   --num_eval_tokens 2048 \
+  --enable_start_recent_kv_cache --start_size 4 --recent_size 512 \
+  --enable_pos_shift  --override_start_text "Hello world." \
+  --output_dir outputs/override_ids
+```
+
+```
+py examples/eval_long_ppl_change.py \
+  --model_name_or_path "meta-llama/Llama-2-7b-hf" \
+  --dataset_name wikitext --task wikitext-103-raw-v1 --split test \
+  --num_samples 50   --num_eval_tokens 2048 \
+  --enable_start_recent_kv_cache --start_size 4 --recent_size 512 \
+  --enable_pos_shift  --override_start_ids "1, 15043, 3186, 29889" \
+  --output_dir outputs/override_ids
+```
+
 # Efficient Streaming Language Models with Attention Sinks 
 [[paper](http://arxiv.org/abs/2309.17453)] [[slides](assets/StreamingLLM.pdf)][[video](https://youtu.be/hvJsEzP34o8)]
 

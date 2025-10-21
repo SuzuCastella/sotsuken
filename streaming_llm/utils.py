@@ -44,6 +44,19 @@ def parse_args():
 
     parser.add_argument("--num_eval_tokens", type=int, default=None)
 
+    parser.add_argument(
+        "--override_start_text",
+        type=str,
+        default=None,
+        help="先頭 start_size トークンを、このテキストを tokenize したトークンで置き換える（special tokens なし）",
+    )
+    parser.add_argument(
+        "--override_start_ids",
+        type=str,
+        default=None,
+        help="先頭 start_size トークンを、このカンマ区切りID列で置き換える（例: '128000,284,720,13'）",
+    )
+
     args = parser.parse_args()
     return args
 
